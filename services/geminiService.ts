@@ -31,13 +31,11 @@ Return the result in JSON.
 `;
 
 export const analyzePhotoWithGemini = async (file: File): Promise<AnalysisResult> => {
-  const apiKey = process.env.API_KEY;
+  // Vite exposes VITE_* vars via import.meta.env
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
   if (!apiKey) {
-    throw new Error("API Key missing. Check Vercel env vars and redeploy.");
-  } else {
-    // Debug log (don't log the full key in production, just first few chars to verify load)
-    console.log(`Gemini Service: Key loaded (${apiKey.substring(0, 4)}...)`);
+    throw new Error("API Key missing. Check Vercel VITE_GEMINI_API_KEY env var.");
   }
 
   const ai = new GoogleGenAI({ apiKey });
