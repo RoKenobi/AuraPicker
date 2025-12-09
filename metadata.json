@@ -1,0 +1,5 @@
+{
+  "name": "Aurapick - AI Photo Selector",
+  "description": "An intelligent Instagram photo selector that uses Google Gemini Vision to analyze aesthetics, composition, and vibe to recommend the perfect shot.",
+  "requestFramePermissions": []
+}
