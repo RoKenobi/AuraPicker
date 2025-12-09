@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { AnalysisResult } from "../types";
 import { generateImageVariations } from "./imageProcessor";
@@ -33,10 +32,9 @@ Return the result in JSON.
 
 export const analyzePhotoWithGemini = async (file: File): Promise<AnalysisResult> => {
   const apiKey = process.env.API_KEY;
-  
+
   if (!apiKey) {
-    console.error("Gemini Service: API Key is missing. Check .env file and vite.config.ts");
-    throw new Error("API Key is missing. Please check your .env configuration.");
+    throw new Error("API Key missing. Check Vercel env vars and redeploy.");
   } else {
     // Debug log (don't log the full key in production, just first few chars to verify load)
     console.log(`Gemini Service: Key loaded (${apiKey.substring(0, 4)}...)`);
